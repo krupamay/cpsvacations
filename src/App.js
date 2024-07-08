@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useRef } from 'react';
+import React, { useState, useEffect,useRef,useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -46,10 +46,10 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(true);
   const intervalId = useRef(null);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     const nextIndex = (activeIndex + 1) % vacations.length;
     setActiveIndex(nextIndex);
-  };
+  }, [activeIndex]);
 
   const handlePrev = () => {
     const prevIndex = activeIndex === 0 ? vacations.length - 1 : activeIndex - 1;
