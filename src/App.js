@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -44,7 +44,7 @@ const vacations = [
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
-  let intervalId = null;
+  const intervalId = useRef(null);
 
   const handleNext = () => {
     const nextIndex = (activeIndex + 1) % vacations.length;
@@ -66,14 +66,14 @@ function App() {
 
   useEffect(() => {
     if (isPlaying) {
-      intervalId = setInterval(() => {
+      intervalId.current = setInterval(() => {
         handleNext();
       }, 3000);
     } else {
-      clearInterval(intervalId);
+      clearInterval(intervalId.current);
     }
 
-    return () => clearInterval(intervalId);
+    return () => clearInterval(intervalId.current);
   }, [activeIndex, isPlaying]);
 
   const handleSubmit = (e) => {
