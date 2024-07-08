@@ -74,7 +74,7 @@ function App() {
     }
 
     return () => clearInterval(intervalId.current);
-  }, [activeIndex, isPlaying]);
+  }, [handleNext, isPlaying]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
