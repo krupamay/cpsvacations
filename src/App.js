@@ -90,37 +90,45 @@ function App() {
     <Router>
       <div className="bg-light">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div className="container d-flex align-items-center justify-content-between">
-    <div className="d-flex align-items-center">
-      <Link to="/" className="navbar-brand">
-        <img src={logo} alt="CP's Vacation" className="logo" />
-      </Link>
-      <div className="header-text text-white ms-3">
-        <h1 className="display-6 mb-0">Welcome to CP's Vacations</h1>
-        <p className="lead mb-0">Vacations Made Memorable</p>
+      <div className="container d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center">
+          <Link to="/" className="navbar-brand">
+            <img src={logo} alt="CP's Vacation" className="logo" />
+          </Link>
+          <div className="header-text text-white ms-3">
+            <h1 className="display-6 mb-0">Welcome to CP's Vacations</h1>
+            <p className="lead mb-0">Vacations Made Memorable</p>
+          </div>
+        </div>
+        <button 
+          className="navbar-toggler" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarNav" 
+          aria-controls="navbarNav" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link to="/" className="nav-link active">Home</Link>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#about">About</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#services">Services</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarNav">
-      <ul className="navbar-nav ms-auto">
-        <li className="nav-item">
-          <Link to="/" className="nav-link active">Home</Link>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#about">About</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#services">Services</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#contact">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    </nav>
 
 
         <Routes>

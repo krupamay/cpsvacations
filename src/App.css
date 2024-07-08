@@ -190,5 +190,23 @@ section {
   height: auto;
 }
 
+.menu-icon {
+  display: none;
+}
 
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu-icon {
+      display: block;
+  }
+  .mobile-nav {
+      display: none;
+  }
+  .mobile-nav.open {
+      display: block;
+  }
+}
 
