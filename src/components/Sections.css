@@ -1,0 +1,23 @@
+.section {
+    padding: 60px 0;
+  }
+  
+  .section h2 {
+    margin-bottom: 30px;
+    color: #333333;
+  }
+  
+  .section p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .section-bg {
+    background-color: #f8f9fa;
+  }
+  
+  .section-dark {
+    background-color: #343a40;
+    color: #ffffff;
+  }
+  
