@@ -8,6 +8,8 @@ import './App.css';
 import keralaTrip from './assets/images/Kerala_Collage_reduce2.png';
 import arunachalTrip from './assets/images/Arunachal_Collage_reduce2.png';
 import meghalayaTrip from './assets/images/Meghalaya_Collage_reduce2.png';
+import kashmirTrip from './assets/images/Kashmir_Collage_reduce2.png';
+import lakshdweepTrip from './assets/images/Lakshadweep_Collage_reduce2.png';
 import logo from './assets/images/Logo_final_transparent.png';
 import whatsappIcon from './assets/images/whatsapp-icon.png';
 import instagramIcon from './assets/images/instagram-icon.png';
@@ -17,8 +19,6 @@ const TripPage = ({ trip }) => (
   <div className="container">
     <h2>{trip.tripName}</h2>
     <img src={trip.image} className="img-fluid mb-4" alt={trip.tripName} />
-    <p><strong>Punchline:</strong> {trip.punchLine}</p>
-    <p><strong>Description:</strong> {trip.description}</p>
     {/* Add more details and images for the trip */}
   </div>
 );
@@ -31,13 +31,23 @@ const vacations = [
   },
   {
     id: 2,
-    tripName: 'Arunachal Pradesh',
+    tripName: 'Arunachal Pradesh Trip',
     image: arunachalTrip
     },
   {
     id: 3,
     tripName: 'Meghalaya Trip',
     image: meghalayaTrip
+  },
+  {
+    id: 4,
+    tripName: 'Kashmir Trip',
+    image: kashmirTrip
+  },
+  {
+    id: 5,
+    tripName: 'Lakshadweep Trip',
+    image: lakshdweepTrip
   }
 ];
 
