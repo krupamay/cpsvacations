@@ -14,6 +14,7 @@ import logo from './assets/images/Logo_final_transparent.png';
 import whatsappIcon from './assets/images/whatsapp-icon.png';
 import instagramIcon from './assets/images/instagram-icon.png';
 
+
 // Component for individual trip page
 const TripPage = ({ trip }) => (
   <div className="container">
@@ -55,6 +56,24 @@ function App() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const intervalId = useRef(null);
+  const [activeLink, setActiveLink] = useState('/');
+  const headerRef = useRef(null);
+  const handleLinkClick = (path, id) => {
+    setActiveLink(path);
+    if (id) {
+      const element = document.getElementById(id);
+      const headerOffset = headerRef.current ? headerRef.current.offsetHeight : 0;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    } else if (path === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const handleNext = useCallback(() => {
     const nextIndex = (activeIndex + 1) % vacations.length;
@@ -96,49 +115,73 @@ function App() {
     e.target.reset();
   };
 
+  const handleScroll = () => {
+    if (!headerRef.current) return;
+
+    const sections = document.querySelectorAll('section');
+    const scrollPosition = window.scrollY + headerRef.current.offsetHeight + 1;
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        setActiveLink(`/#${sectionId}`);
+      }
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <Router>
       <div className="bg-light">
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container d-flex align-items-center justify-content-between">
-        <div className="d-flex align-items-center">
-          <Link to="/" className="navbar-brand">
-            <img src={logo} alt="CP's Vacation" className="logo" />
-          </Link>
-          <div className="header-text text-white ms-3">
-            <h1 className="display-6 mb-0">Welcome to CP's Vacations</h1>
-            <p className="lead mb-0">Vacations Made Memorable</p>
+      <nav className="navbar navbar-expand-lg header fixed-top">
+          <div className="container d-flex align-items-center justify-content-between">
+            <div className="d-flex align-items-center">
+              <Link to="/" className="navbar-brand" onClick={() => handleLinkClick('/')}>
+                <img src={logo} alt="CP's Vacation" className="logo" />
+              </Link>
+              <div className="header-text ms-3 welcome-message">
+                <h1 className="display-6 mb-0 cp-vacation-title">Welcome to CP's Vacations!</h1>
+                <p className="lead mb-0">Vacations Made Memorable</p>
+              </div>
+            </div>
+            <button 
+              className="navbar-toggler" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" 
+              aria-expanded="false" 
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                  <Link to="/" className={`nav-link ${activeLink === '/' ? 'active' : ''}`} onClick={() => handleLinkClick('/')}>Home</Link>
+                </li>
+                <li className="nav-item">
+                  <a className={`nav-link ${activeLink === '/#about' ? 'active' : ''}`} href="#about" onClick={() => handleLinkClick('/#about', 'about')}>About</a>
+                </li>
+                <li className="nav-item">
+                  <a className={`nav-link ${activeLink === '/#services' ? 'active' : ''}`} href="#services" onClick={() => handleLinkClick('/#services', 'services')}>Services</a>
+                </li>
+                <li className="nav-item">
+                  <a className={`nav-link ${activeLink === '/#contact' ? 'active' : ''}`} href="#contact" onClick={() => handleLinkClick('/#contact', 'contact')}>Contact</a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarNav" 
-          aria-controls="navbarNav" 
-          aria-expanded="false" 
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <Link to="/" className="nav-link active">Home</Link>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#about">About</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#services">Services</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+        </nav>
 
 
         <Routes>
@@ -193,9 +236,9 @@ function App() {
         <section id="about" className="py-5">
           <div className="container">
             <h2 className="text-center mb-4">About Us</h2>
-            <p>Welcome to CP's Vacations, where your dream vacation comes to life with the expertise of seasoned travellers. Founded by Mr. Chidananda Puri, an avid traveller who has explored almost the entire India and its neighbouring countries, our agency is built on the foundation of personal experience and passion for travel.</p>
-            <p>At CP's Vacations, we pride ourselves on offering travel packages to destinations that we have personally explored. This unique approach ensures that at least one of our team members has firsthand knowledge of your chosen destination, providing you with insights and connections that only a true traveller can offer. Our direct and personal relationships with service providers eliminate the middleman, guaranteeing you an authentic and seamless travel experience.</p>
-            <p>We stand apart from other travel agencies in India by refusing to deal with B2B travel packages. Unlike many others, we don't simply add a profit margin to pre-packaged deals. Instead, we curate each itinerary with care and precision, based on our own travel experiences and connections.
+            <p class="justified-text">Welcome to CP's Vacations, where your dream vacation comes to life with the expertise of seasoned travellers. Founded by Mr. Chidananda Puri, an avid traveller who has explored almost the entire India and its neighbouring countries, our agency is built on the foundation of personal experience and passion for travel.</p>
+            <p class="justified-text">At CP's Vacations, we pride ourselves on offering travel packages to destinations that we have personally explored. This unique approach ensures that at least one of our team members has firsthand knowledge of your chosen destination, providing you with insights and connections that only a true traveller can offer. Our direct and personal relationships with service providers eliminate the middleman, guaranteeing you an authentic and seamless travel experience.</p>
+            <p class="justified-text">We stand apart from other travel agencies in India by refusing to deal with B2B travel packages. Unlike many others, we don't simply add a profit margin to pre-packaged deals. Instead, we curate each itinerary with care and precision, based on our own travel experiences and connections.
 </p>
 <p>Our founder is an MBA post-graduate from the prestigious Xavier Institute of Management, Bhubaneswar, and an engineer from one of oldest government engineering colleges of the country. With a decade of experience in customer-facing leadership roles across multiple reputed companies, Mr. Puri combines his professional expertise with his love & passion for travel to lead a team of dedicated travel enthusiasts.</p>
           </div>
@@ -243,7 +286,7 @@ function App() {
               </div>
             </div>
             <br/>
-            <h3>Custom Travel Packages</h3>
+            <h4>Custom Travel Packages</h4>
             <p>We offer bespoke travel packages to some of the most breathtaking destinations in India, including:</p>
             <ul>
               <li>
@@ -266,19 +309,19 @@ function App() {
               </li>
             </ul>
 
-            <h3>Personalized Itineraries</h3>
-            <p>Each travel package is meticulously planned by our team of passionate travel experts who have personally visited these destinations. This ensures that you receive accurate, firsthand information and recommendations tailored to your preferences.</p>
+            <h4>Personalized Itineraries</h4>
+            <p class="justified-text">Each travel package is meticulously planned by our team of passionate travel experts who have personally visited these destinations. This ensures that you receive accurate, firsthand information and recommendations tailored to your preferences.</p>
 
-            <h3>Direct Connections</h3>
-            <p>We pride ourselves on having direct and personal connections with local service providers. This means no middlemen and a more authentic travel experience for you. Our relationships with local hosts, guides, and vendors ensure you get the best services at the most competitive prices.</p>
+            <h4>Direct Connections</h4>
+            <p class="justified-text">We pride ourselves on having direct and personal connections with local service providers. This means no middlemen and a more authentic travel experience for you. Our relationships with local hosts, guides, and vendors ensure you get the best services at the most competitive prices.</p>
 
-            <h3>Hassle-Free Travel Planning</h3>
-            <p>From accommodation and transportation to guided tours and unique local experiences, we take care of all the details. Our goal is to provide you with a hassle-free travel experience so you can focus on creating memories.</p>
+            <h4>Hassle-Free Travel Planning</h4>
+            <p class="justified-text">From accommodation and transportation to guided tours and unique local experiences, we take care of all the details. Our goal is to provide you with a hassle-free travel experience so you can focus on creating memories.</p>
 
-            <h3>Expanding Horizons</h3>
-            <p>While we currently offer travel packages to Lakshadweep, Kerala, Arunachal Pradesh, Meghalaya, Odisha, and Kashmir, we are continually exploring new destinations to add to our offerings. Stay tuned for more exciting locations soon!</p>
+            <h4>Expanding Horizons</h4>
+            <p class="justified-text">While we currently offer travel packages to Lakshadweep, Kerala, Arunachal Pradesh, Meghalaya, Odisha, and Kashmir, we are continually exploring new destinations to add to our offerings. Stay tuned for more exciting locations soon!</p>
 
-            <p>Choose CP's Vacations for your next vacation and experience the difference of traveling with true experts who share your passion for exploration.</p>
+            <p class="justified-text">Choose CP's Vacations for your next vacation and experience the difference of traveling with true experts who share your passion for exploration.</p>
           </div>
         </section>
 
@@ -286,25 +329,25 @@ function App() {
           <div className="container">
             <h2 className="text-center mb-4">Contact Us</h2>
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-md-6"  >
                 <h5>Contact Details:</h5>
                 <p>Plot No. 62/2435, Rajarani Colony<br />Bhubaneswar, Odisha, India. PIN: 751014</p>
                 <p>Email: <a href="mailto:cpsvacations.official@gmail.com">cpsvacations.official@gmail.com</a></p>
                 <p>Call/WhatsApp: <a href="https://wa.me/919439442166" target="_blank" rel="noopener noreferrer"><img src={whatsappIcon} alt="WhatsApp" style={{ width: '24px', marginRight: '8px' }} />+91-9439442166</a></p>
                 <p>Instagram: <a href="https://www.instagram.com/cps_vacations/" target="_blank" rel="noopener noreferrer"><img src={instagramIcon} alt="Instagram" style={{ width: '24px', marginRight: '8px' }} />https://www.instagram.com/cps_vacations/</a></p>
                 <div style={{ marginTop: '20px' }}>
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14703.027384759226!2d85.8415127!3d20.2724824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a7f3280e5d55%3A0x4050d8bb4aa25411!2sRajarani%20Colony%2C%20Bhubaneswar%2C%20Odisha%20751014!5e0!3m2!1sen!2sin!4v1688902416326!5m2!1sen!2sin"
-                  width="100%"
-                  height="300"
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.391715453056!2d85.84137037560862!3d20.242582914315385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a7e5bf34a54d%3A0x4404bf2d7e91e346!2sCP&#39;s%20Vacations!5e0!3m2!1sen!2sin!4v1720861654041!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="220" 
                   style={{ border: '0' }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  title="Google Map"
-                ></iframe>
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Google Map">
+                </iframe>
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6" style={{ height: '400px' }}>
                 <h4>Send us a message:</h4>
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
@@ -326,9 +369,9 @@ function App() {
           </div>
         </section>
 
-        <footer className="py-3 bg-dark text-white text-center">
+        <footer className="py-3 text-center header">
           <div className="container">
-            <p className="mb-0">© 2024 CP's Vacations. All rights reserved.</p>
+            <p className="mb-0 cp-vacation-title">© 2024 CP's Vacations. All rights reserved.</p>
           </div>
         </footer>
       </div>

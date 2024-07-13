@@ -39,7 +39,7 @@
 
 
 .carousel-indicators {
-  bottom: -20px; /* Adjust the vertical position as needed */
+  bottom: -10px; /* Adjust the vertical position as needed */
 }
 
 .carousel-indicators li {
@@ -56,9 +56,27 @@
 
 
 .header {
-  background-color: #0a2f87;
-  color: #ffffff;
+  background-color: #e6c208;
   font-family: 'Arial', sans-serif;
+}
+
+.header .welcome-message, .header .nav-menu a {
+  color: #00a19b;
+  font-family: 'Arial', sans-serif;
+}
+
+.cp-vacation-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold; 
+  color: #00a19b;
+  position: relative; /* Enable relative positioning for layering */
+  /* padding: 10px;  */
+
+  /* text-shadow: 
+     -1px -1px 0px black,  
+     1px -1px 0px black,   
+     -1px 1px 0px black,   
+     1px 1px 0px black;     */
 }
 
 .container {
@@ -121,12 +139,22 @@
 
 /* Styles for play/pause button */
 .play-pause-button {
-  font-size: 2rem; /* Larger size for button */
+  font-size: 3rem; /* Larger size for button */
   color: #000000; /* Black color */
 }
 
 body {
   font-family: Arial, sans-serif;
+  padding-top: 110px;
+  scroll-padding-top: 70px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 120px; /* Adjust the height of the navbar if needed */
 }
 
 .navbar .container {
@@ -136,16 +164,11 @@ body {
 }
 
 .navbar-nav .nav-link {
-  color: #ffffff;
+  color: #00a19b;
 }
 
 .navbar-nav .nav-link.active {
-  color: #FFD700; /* Gold color for the active link */
-}
-
-header {
-  background-color: #343a40; /* Dark background */
-  color: white; /* White text */
+  color: #ff0000; /* Gold color for the active link */
 }
 
 .carousel {
@@ -173,10 +196,23 @@ header {
 
 section {
   padding: 2rem 0;
+  scroll-margin-top: 56px;
+  padding-top: 70px; /* Adjust according to your navbar height */
+  margin-top: -70px; /* Adjust according to your navbar height */
 }
 
 .card {
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
 }
 
 .social-icons {
@@ -210,3 +246,6 @@ section {
   }
 }
 
+.justified-text {
+  text-align: justify;
+}
