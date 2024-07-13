@@ -333,7 +333,7 @@ section {
   }
 
   .lead {
-    font-size: 0.9rem; /* Adjust as necessary */
+    font-size: 0.8rem; /* Adjust as necessary */
     margin-top: 0; /* Reduce top margin */
   }
 
@@ -349,7 +349,7 @@ section {
     justify-content: flex-end; /* Ensure menu items are aligned to the right */
   }
   .navbar-nav .nav-link {
-    font-size: 0.8rem; /* Make the nav menu items smaller */
+    font-size: 0.6rem; /* Make the nav menu items smaller */
     padding: 5px 10px; /* Adjust padding for smaller size */
   }
 }
