@@ -375,7 +375,7 @@ function App() {
           </div>
         </section>
 
-        <footer className="py-3 text-center header">
+        <footer className="py-3 text-center footer">
           <div className="container">
             <p className="mb-0 cp-vacation-title">© 2024 CP's Vacations. All rights reserved.</p>
           </div>

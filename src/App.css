@@ -56,9 +56,23 @@
 
 
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   background-color: #e6c208;
   font-family: 'Arial', sans-serif;
+  padding: 10px 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;                                                                                                  
 }
+
+.footer {
+  background-color: #e6c208;
+}
+
 
 .header .welcome-message, .header .nav-menu a {
   color: #00a19b;
@@ -70,6 +84,9 @@
   font-weight: bold; 
   color: #00a19b;
   position: relative; /* Enable relative positioning for layering */
+  white-space: nowrap; /* Prevents text wrapping */
+  overflow: hidden; /* Hides overflow text */
+  text-overflow: ellipsis; /* Adds ellipsis to overflowing text */
   /* padding: 10px;  */
 
   /* text-shadow: 
@@ -236,18 +253,17 @@ section {
   top: 20px; /* Adjust the top position as needed */
 }
 
-/* Ensure the mobile-nav is properly positioned */
 .mobile-nav {
   display: none;
-  position: fixed; /* Fixed positioning to prevent overlapping */
-  top: 60px; /* Adjust based on your header height */
-  left: 0;
-  right: 0;
+  position: absolute; /* Use absolute positioning */
+  top: 100%; /* Position it below the header */
+  right: 0; /* Align to the right */
   background-color: #e6c208; /* Match your header color */
-  text-align: center;
+  text-align: left; /* Align text to the left */
   z-index: 1000;
-  padding-top: 20px; /* Add padding to avoid overlapping */
-  padding-bottom: 20px;
+  width: 200px; /* Set a fixed width */
+  border: 1px solid #ccc; /* Optional: Add a border for clarity */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
 }
 
 .mobile-nav a {
@@ -255,6 +271,10 @@ section {
   padding: 1rem;
   color: #00a19b; /* Match your link color */
   text-decoration: none;
+}
+
+.mobile-nav a:hover {
+  background-color: #f1f1f1; /* Optional: Add hover effect */
 }
 
 @media (max-width: 1024px) {
@@ -269,10 +289,9 @@ section {
   }
 }
 
-/* Adjust the navbar for smaller screens */
 @media (max-width: 768px) {
   .navbar {
-    position: relative;
+    position: fixed;
   }
   .navbar-nav {
     display: none; /* Hide the regular nav on smaller screens */
@@ -282,6 +301,63 @@ section {
   }
 }
 
+@media (max-width: 768px) {
+  .header .welcome-message {
+    font-size: 1.2rem; /* Adjust as necessary */
+    line-height: 1.4;
+  }
+
+  .cp-vacation-title {
+    font-size: 1.5rem; /* Adjust as necessary */
+  }
+
+  .lead {
+    font-size: 1rem; /* Adjust as necessary */
+  }
+}
+
 .justified-text {
   text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .header .welcome-message {
+    font-size: 1rem; /* Adjust as necessary */
+    line-height: 1.2;
+    margin-left: 5px;
+  }
+
+  .cp-vacation-title {
+    font-size: 1.2rem; /* Adjust as necessary */
+  }
+
+  .lead {
+    font-size: 0.9rem; /* Adjust as necessary */
+  }
+
+  .navbar-brand img {
+    height: 30px; /* Adjust the logo size for mobile */
+  }
+
+  .navbar-toggler {
+    margin-left: auto; /* Push the toggle button to the right */
+  }
+
+  .navbar-collapse {
+    justify-content: flex-end; /* Ensure menu items are aligned to the right */
+  }
+  .navbar-nav .nav-link {
+    font-size: 0.8rem; /* Make the nav menu items smaller */
+    padding: 5px 10px; /* Adjust padding for smaller size */
+  }
+}
+
+/* Adjust for desktop screens */
+@media (min-width: 769px) {
+  .header .welcome-message {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px; /* Add margin to separate from the logo */
+  }
 }
