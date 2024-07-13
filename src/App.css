@@ -336,7 +336,7 @@ section {
   }
 
   .navbar-brand img {
-    height: 30px; /* Adjust the logo size for mobile */
+    height: 40px; /* Adjust the logo size for mobile */
   }
 
   .navbar-toggler {
