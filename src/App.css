@@ -303,7 +303,7 @@ section {
 
 @media (max-width: 768px) {
   .header .welcome-message {
-    font-size: 1.2rem; /* Adjust as necessary */
+    font-size: 1rem; /* Adjust as necessary */
     line-height: 1.4;
   }
 
@@ -328,11 +328,13 @@ section {
   }
 
   .cp-vacation-title {
-    font-size: 1.2rem; /* Adjust as necessary */
+    font-size: 1rem; /* Adjust as necessary */
+    margin-bottom: 0; /* Reduce bottom margin */
   }
 
   .lead {
     font-size: 0.9rem; /* Adjust as necessary */
+    margin-top: 0; /* Reduce top margin */
   }
 
   .navbar-brand img {
