@@ -240,7 +240,7 @@ function App() {
             <p class="justified-text">At CP's Vacations, we pride ourselves on offering travel packages to destinations that we have personally explored. This unique approach ensures that at least one of our team members has firsthand knowledge of your chosen destination, providing you with insights and connections that only a true traveller can offer. Our direct and personal relationships with service providers eliminate the middleman, guaranteeing you an authentic and seamless travel experience.</p>
             <p class="justified-text">We stand apart from other travel agencies in India by refusing to deal with B2B travel packages. Unlike many others, we don't simply add a profit margin to pre-packaged deals. Instead, we curate each itinerary with care and precision, based on our own travel experiences and connections.
 </p>
-<p>Our founder is an MBA post-graduate from the prestigious Xavier Institute of Management, Bhubaneswar, and an engineer from one of oldest government engineering colleges of the country. With a decade of experience in customer-facing leadership roles across multiple reputed companies, Mr. Puri combines his professional expertise with his love & passion for travel to lead a team of dedicated travel enthusiasts.</p>
+<p class="justified-text">Our founder is an MBA post-graduate from the prestigious Xavier Institute of Management, Bhubaneswar, and an engineer from one of oldest government engineering colleges of the country. With a decade of experience in customer-facing leadership roles across multiple reputed companies, Mr. Puri combines his professional expertise with his love & passion for travel to lead a team of dedicated travel enthusiasts.</p>
           </div>
         </section>
 
