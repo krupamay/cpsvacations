@@ -58,8 +58,10 @@ function App() {
   const intervalId = useRef(null);
   const [activeLink, setActiveLink] = useState('/');
   const headerRef = useRef(null);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const handleLinkClick = (path, id) => {
     setActiveLink(path);
+    setMobileNavOpen(false);
     if (id) {
       const element = document.getElementById(id);
       const headerOffset = headerRef.current ? headerRef.current.offsetHeight : 0;
@@ -73,6 +75,10 @@ function App() {
     } else if (path === '/') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  };
+
+  const toggleMobileNav = () => {
+    setMobileNavOpen(!mobileNavOpen);
   };
 
   const handleNext = useCallback(() => {
@@ -154,19 +160,21 @@ function App() {
               </div>
             </div>
             <button 
-              className="navbar-toggler" 
+              className="navbar-toggler menu-icon" 
               type="button" 
-              data-bs-toggle="collapse" 
-              data-bs-target="#navbarNav" 
-              aria-controls="navbarNav" 
-              aria-expanded="false" 
-              aria-label="Toggle navigation"
+              onClick={toggleMobileNav}
             >
               <span className="navbar-toggler-icon"></span>
             </button>
+            <div className={`mobile-nav ${mobileNavOpen ? 'open' : ''}`}>
+              <Link to="/" className={`nav-link ${activeLink === '/' ? 'active' : ''}`} onClick={() => handleLinkClick('/')}>Home</Link>
+              <a className={`nav-link ${activeLink === '/#about' ? 'active' : ''}`} href="#about" onClick={() => handleLinkClick('/#about', 'about')}>About</a>
+              <a className={`nav-link ${activeLink === '/#services' ? 'active' : ''}`} href="#services" onClick={() => handleLinkClick('/#services', 'services')}>Services</a>
+              <a className={`nav-link ${activeLink === '/#contact' ? 'active' : ''}`} href="#contact" onClick={() => handleLinkClick('/#contact', 'contact')}>Contact</a>
+            </div>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
+                <li className="nav-item">
                   <Link to="/" className={`nav-link ${activeLink === '/' ? 'active' : ''}`} onClick={() => handleLinkClick('/')}>Home</Link>
                 </li>
                 <li className="nav-item">
@@ -182,8 +190,6 @@ function App() {
             </div>
           </div>
         </nav>
-
-
         <Routes>
           <Route
             path="/"
@@ -338,7 +344,7 @@ function App() {
                 <div style={{ marginTop: '20px' }}>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.391715453056!2d85.84137037560862!3d20.242582914315385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a7e5bf34a54d%3A0x4404bf2d7e91e346!2sCP&#39;s%20Vacations!5e0!3m2!1sen!2sin!4v1720861654041!5m2!1sen!2sin" 
                   width="100%" 
-                  height="220" 
+                  height="210" 
                   style={{ border: '0' }}
                   allowfullscreen="" 
                   loading="lazy" 
