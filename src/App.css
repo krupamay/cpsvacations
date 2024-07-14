@@ -66,7 +66,8 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
-  justify-content: space-between;                                                                                                  
+  justify-content: space-between;
+  align-items: center;                                                                                               
 }
 
 .footer {
@@ -98,6 +99,7 @@
 
 .container {
   margin-top: 20px;
+  align-items: center;
 }
 
 .carousel-image {
@@ -176,6 +178,7 @@ body {
 
 .navbar .container {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   align-items: center;
 }
@@ -301,40 +304,34 @@ section {
   }
 }
 
-@media (max-width: 768px) {
-  .header .welcome-message {
-    font-size: 1rem; /* Adjust as necessary */
-    line-height: 1.4;
-  }
-
-  .cp-vacation-title {
-    font-size: 1.5rem; /* Adjust as necessary */
-  }
-
-  .lead {
-    font-size: 1rem; /* Adjust as necessary */
-  }
-}
-
 .justified-text {
   text-align: justify;
 }
 
 @media (max-width: 768px) {
   .header .welcome-message {
-    font-size: 1rem; /* Adjust as necessary */
-    line-height: 1.2;
-    margin-left: 5px;
+    line-height: 1;
+    margin-left: 1px;
   }
 
+  .logo {
+    height: 100px; /* Adjust as necessary */
+    width: auto;
+  }
   .cp-vacation-title {
     font-size: 1rem; /* Adjust as necessary */
     margin-bottom: 0; /* Reduce bottom margin */
+    margin-left: 0px;
+    position: relative; /* Enable relative positioning for layering */
+    white-space: nowrap; /* Prevents text wrapping */
+    overflow: hidden; /* Hides overflow text */
+    text-overflow: ellipsis; /* Adds ellipsis to overflowing text */
   }
 
   .lead {
     font-size: 0.8rem; /* Adjust as necessary */
     margin-top: 0; /* Reduce top margin */
+    margin-left: 0px;
   }
 
   .navbar-brand img {
@@ -361,5 +358,15 @@ section {
     flex-direction: column;
     align-items: flex-start;
     margin-left: 20px; /* Add margin to separate from the logo */
+  }
+}
+
+.custom-spacing {
+  margin-top: 20px; 
+}
+
+@media (max-width: 768px) {
+  .custom-spacing {
+    margin-top: 20px;
   }
 }

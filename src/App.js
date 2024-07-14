@@ -154,7 +154,7 @@ function App() {
               <Link to="/" className="navbar-brand" onClick={() => handleLinkClick('/')}>
                 <img src={logo} alt="CP's Vacation" className="logo" />
               </Link>
-              <div className="header-text ms-3 welcome-message">
+              <div className="header-text welcome-message">
                 <h1 className="display-6 mb-0 cp-vacation-title">Welcome to CP's Vacations!</h1>
                 <p className="lead mb-0">Vacations Made Memorable</p>
               </div>
@@ -239,7 +239,7 @@ function App() {
           ))}
         </Routes>
 
-        <section id="about" className="py-5">
+        <section id="about" className="py-5 custom-spacing">
           <div className="container">
             <h2 className="text-center mb-4">About Us</h2>
             <p class="justified-text">Welcome to CP's Vacations, where your dream vacation comes to life with the expertise of seasoned travellers. Founded by Mr. Chidananda Puri, an avid traveller who has explored almost the entire India and its neighbouring countries, our agency is built on the foundation of personal experience and passion for travel.</p>
