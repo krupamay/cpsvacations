@@ -242,7 +242,7 @@ function App() {
         <section id="about" className="py-5 custom-spacing">
           <div className="container">
             <h2 className="text-center mb-4">About Us</h2>
-            <p class="justified-text">Welcome to CP's Vacations, where your dream vacation comes to life with the expertise of seasoned travellers. Founded by Mr. Chidananda Puri, an avid traveller who has explored almost the entire India and its neighbouring countries, our agency is built on the foundation of personal experience and passion for travel.</p>
+            <p class="justified-text">Welcome to CP's Vacations, where your dream vacation comes to life with the expertise of seasoned travellers. Founded by Mr. Chidananda Puri, an avid traveller who has explored almost the entire India and its neighbouring countries, our company is built on the foundation of personal experience and passion for travel.</p>
             <p class="justified-text">At CP's Vacations, we pride ourselves on offering travel packages to destinations that we have personally explored. This unique approach ensures that at least one of our team members has firsthand knowledge of your chosen destination, providing you with insights and connections that only a true traveller can offer. Our direct and personal relationships with service providers eliminate the middleman, guaranteeing you an authentic and seamless travel experience.</p>
             <p class="justified-text">We stand apart from other travel agencies in India by refusing to deal with B2B travel packages. Unlike many others, we don't simply add a profit margin to pre-packaged deals. Instead, we curate each itinerary with care and precision, based on our own travel experiences and connections.
 </p>
@@ -313,6 +313,9 @@ function App() {
               <li>
                 <strong>Kashmir:</strong> Embrace the tranquillity of the Valley of Heaven with its snow-capped mountains, beautiful gardens, and houseboat stays. So, “Chalo Kashmir”.
               </li>
+              <li>
+                <strong>Tamil Nadu:</strong> Explore the rich cultural heritage and magnificent temples of "Enchanting Tamil Nadu", where history meets natural beauty.
+              </li>
             </ul>
 
             <h4>Personalized Itineraries</h4>
@@ -325,7 +328,7 @@ function App() {
             <p class="justified-text">From accommodation and transportation to guided tours and unique local experiences, we take care of all the details. Our goal is to provide you with a hassle-free travel experience so you can focus on creating memories.</p>
 
             <h4>Expanding Horizons</h4>
-            <p class="justified-text">While we currently offer travel packages to Lakshadweep, Kerala, Arunachal Pradesh, Meghalaya, Odisha, and Kashmir, we are continually exploring new destinations to add to our offerings. Stay tuned for more exciting locations soon!</p>
+            <p class="justified-text">While we currently offer travel packages to Lakshadweep, Kerala, Tamil Nadu, Arunachal Pradesh, Meghalaya, Odisha, and Kashmir, we are continually exploring new destinations to add to our offerings. Stay tuned for more exciting locations soon!</p>
 
             <p class="justified-text">Choose CP's Vacations for your next vacation and experience the difference of traveling with true experts who share your passion for exploration.</p>
           </div>
