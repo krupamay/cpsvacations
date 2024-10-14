@@ -152,7 +152,7 @@ function App() {
           <div className="container d-flex align-items-center justify-content-between">
             <div className="d-flex align-items-center">
               <Link to="/" className="navbar-brand" onClick={() => handleLinkClick('/')}>
-                <img src={logo} alt="CP's Vacation" className="logo" />
+                <img src={logo} alt="CP's Vacations" className="logo" />
               </Link>
               <div className="header-text welcome-message">
                 <h1 className="display-6 mb-0 cp-vacation-title">Welcome to CP's Vacations!</h1>
