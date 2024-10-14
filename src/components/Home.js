@@ -32,7 +32,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Welcome to CP's Vacation</h1>
+      <h1>Welcome to CP's Vacations</h1>
       <p>Your ultimate travel partner</p>
 
       <Carousel pause={isPlaying ? null : 'hover'}>
