@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './App.css';
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 // Import local images
 import keralaTrip from './assets/images/Kerala_Collage_reduce2.png';
@@ -59,6 +63,7 @@ function App() {
   const [activeLink, setActiveLink] = useState('/');
   const headerRef = useRef(null);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const form = useRef();
   const handleLinkClick = (path, id) => {
     setActiveLink(path);
     setMobileNavOpen(false);
@@ -113,9 +118,38 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const email = e.target.user_email.value;
+    const name = e.target.user_name.value;
+    const message = e.target.message.value;
+
+    if (!emailRegex.test(email)) {
+      toast.error('Please enter a valid email address.');
+      return;
+    }
+
+    if (name.trim() === '' || message.trim() === '') {
+      toast.error('Please fill out all fields.');
+      return;
+    }
+    emailjs.sendForm(
+      'service_kkn3n4q',     // Replace with your EmailJS service ID
+      'template_tswqyl1',    // Replace with your EmailJS template ID
+      form.current,
+      'ldx3ac94UspPioijP'      // Replace with your EmailJS public key
+    )
+    .then((result) => {
+      console.log('Email successfully sent!', result.text);
+      toast.success('Message sent successfully!');
+      e.target.reset();
+    })
+    .catch((error) => {
+      console.error('Email sending failed:', error.text);
+      toast.error('Failed to send message. Please try again.');
+    });
     console.log('Form submitted:', {
-      name: e.target.name.value,
-      email: e.target.email.value,
+      name: e.target.user_name.value,
+      email: e.target.user_email.value,
       message: e.target.message.value
     });
     e.target.reset();
@@ -148,6 +182,12 @@ function App() {
   return (
     <Router>
       <div className="bg-light">
+      <ToastContainer                        
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+        />
       <nav className="navbar navbar-expand-lg header fixed-top">
           <div className="container d-flex align-items-center justify-content-between">
             <div className="d-flex align-items-center">
@@ -358,18 +398,18 @@ function App() {
               </div>
               <div className="col-md-6" style={{ height: '400px' }}>
                 <h4>Send us a message:</h4>
-                <form onSubmit={handleSubmit}>
+                <form ref={form} onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
-                    <input type="text" className="form-control" id="name" required />
+                    <input type="text" className="form-control" id="name" name="user_name" required />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label>
-                    <input type="email" className="form-control" id="email" required />
+                    <input  className="form-control" id="email" name="user_email" required />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="message" className="form-label">Message</label>
-                    <textarea className="form-control" id="message" rows="5" required></textarea>
+                    <textarea className="form-control" id="message" name="message" rows="5" required></textarea>
                   </div>
                   <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
