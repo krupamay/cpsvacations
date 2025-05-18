@@ -14,9 +14,11 @@ import arunachalTrip from './assets/images/Arunachal_Collage_reduce2.png';
 import meghalayaTrip from './assets/images/Meghalaya_Collage_reduce2.png';
 import kashmirTrip from './assets/images/Kashmir_Collage_reduce2.png';
 import lakshdweepTrip from './assets/images/Lakshadweep_Collage_reduce2.png';
+import sikimTrip from './assets/images/Sikkim_Collage.png';
 import logo from './assets/images/Logo_final_transparent.png';
 import whatsappIcon from './assets/images/whatsapp-icon.png';
 import instagramIcon from './assets/images/instagram-icon.png';
+
 
 
 // Component for individual trip page
@@ -53,6 +55,11 @@ const vacations = [
     id: 5,
     tripName: 'Lakshadweep Trip',
     image: lakshdweepTrip
+  },
+  {
+    id: 6,
+    tripName: 'Sikkim Trip',
+    image: sikimTrip
   }
 ];
 
@@ -348,6 +355,12 @@ function App() {
                 <strong>Meghalaya:</strong> Wander through the living root bridges, picturesque waterfalls, and misty hills of this enchanting state, the “Halfway to heaven”.
               </li>
               <li>
+                <strong>Sikkim:</strong>  Immerse yourself in the pristine beauty of Sikkim, "Where Nature Smiles" with snow-capped peaks, vibrant monasteries, and untouched natural beauties. 
+              </li>
+              <li>
+                <strong>Darjeeling:</strong> Experience the charm of Darjeeling, the "Queen of the Hills," known for its tea gardens, toy train, and panoramic Himalayan views.
+              </li>
+              <li>
                 <strong>Odisha:</strong> Immerse yourself in the historical and cultural richness, from ancient temples to pristine beaches. It’s truly “India’s best kept secret”.
               </li>
               <li>
@@ -405,7 +418,7 @@ function App() {
                   </div>
                   <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label>
-                    <input  className="form-control" id="email" name="user_email" required />
+                    <input   className="form-control" id="email" name="user_email" required />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="message" className="form-label">Message</label>
