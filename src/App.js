@@ -381,7 +381,7 @@ function App() {
             <p class="justified-text">From accommodation and transportation to guided tours and unique local experiences, we take care of all the details. Our goal is to provide you with a hassle-free travel experience so you can focus on creating memories.</p>
 
             <h4>Expanding Horizons</h4>
-            <p class="justified-text">While we currently offer travel packages to Lakshadweep, Kerala, Tamil Nadu, Arunachal Pradesh, Meghalaya, Odisha, and Kashmir, we are continually exploring new destinations to add to our offerings. Stay tuned for more exciting locations soon!</p>
+            <p class="justified-text">While we currently offer travel packages to Lakshadweep, Kerala, Tamil Nadu, Arunachal Pradesh, Meghalaya, Sikkim, Darjeeling, Odisha, and Kashmir, we are continually exploring new destinations to add to our offerings. Stay tuned for more exciting locations soon!</p>
 
             <p class="justified-text">Choose CP's Vacations for your next vacation and experience the difference of traveling with true experts who share your passion for exploration.</p>
           </div>
